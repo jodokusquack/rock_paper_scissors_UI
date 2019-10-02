@@ -64,7 +64,7 @@ function game() {
   let computerWinCount = 0;
   let message;
 
-  while (playerWinCount + computerWinCount < 1) {
+  while (playerWinCount + computerWinCount < 5) {
     playerSelection = prompt("Choose 'Rock', 'Paper' or 'Scissors'.")
     computerSelection = computerPlay();
     let winner = playRound(playerSelection, computerSelection);
