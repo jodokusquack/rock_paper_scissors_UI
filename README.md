@@ -4,4 +4,4 @@ This is a JavaScript Project from "[The Odin Project](https://www.theodinproject
 
 This is the game Rock Paper Scissors with a UI. Let's see!
 
-Thanks fpr playing!
+Thanks for playing!

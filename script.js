@@ -15,15 +15,19 @@ function computerPlay() {
   return answer;
 }
 
-function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
+function playRound() {
+  let playerSelection = this.id;
+  let computerSelection = computerPlay();
+
   let win;
   let winner;
-  let message;
 
   if (playerSelection === computerSelection) {
     
     winner = "tie";
+    console.log(playerSelection);
+    console.log(computerSelection);
+    console.log(winner);
   }
 
   if (playerSelection === "rock") {
@@ -44,19 +48,57 @@ function playRound(playerSelection, computerSelection) {
     } else if (computerSelection === "paper") {
       win = true;
     }
-  } else {
-    message = "Please enter either Rock, Paper or Scissors.";
   }
 
   if (win === true) {
     
     winner = "player";
+    console.log(playerSelection);
+    console.log(computerSelection);
+    console.log(winner);
+    updateScore(winner);
+    checkPlayerWin();
+
   } else if (win === false) {
     
-    winner = "computer"
+    winner = "computer";
+    console.log(playerSelection);
+    console.log(computerSelection);
+    console.log(winner);
+    updateScore(winner);
+    checkComputerWin();
+
   }
 
   return winner;
+}
+
+function updateScore(winner) {
+  let field;
+  if (winner === 'player') {
+    field = playerScoreField;
+  } else if (winner === 'computer') {
+    field = computerScoreField;
+  } else {
+    return;
+  }
+  let currentScore = Number(field.textContent);
+  let newScore = currentScore + 1;
+  field.textContent = newScore;
+}
+
+function checkPlayerWin() {
+  let currentScore = Number(playerScoreField.textContent);
+  if (currentScore >= 5) {
+    winnerField.textContent = 'Congrutalations! You won against the Computer. Want to play again?';
+  }
+}
+
+function checkComputerWin() {
+  let currentScore = Number(computerScoreField.textContent);
+  if (currentScore >= 5) {
+    winnerField.textContent = 'Oh no! The computer won. Better Luck next time. Want to play again?';
+  }
 }
 
 function game() {
@@ -88,4 +130,13 @@ function game() {
   console.log("The final winner is: " + ((playerWinCount < computerWinCount) ? "The Computer" : "You"));
 }
 
-game();
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const scissorsButton = document.querySelector('#scissors');
+const playerScoreField = document.querySelector('#playerScore');
+const computerScoreField = document.querySelector('#computerScore');
+const winnerField = document.querySelector('#winner');
+
+rockButton.addEventListener('click', playRound);
+paperButton.addEventListener('click', playRound);
+scissorsButton.addEventListener('click', playRound);
