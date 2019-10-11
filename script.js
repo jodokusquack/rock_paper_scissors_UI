@@ -19,8 +19,16 @@ function playRound() {
   let playerSelection = this.id;
   let computerSelection = computerPlay();
 
+  playerSelectionCapitalised = playerSelection.replace(playerSelection[0], playerSelection[0].toUpperCase());
+  computerSelectionCapitalised = computerSelection.replace(computerSelection[0], computerSelection[0].toUpperCase());
+
+  playerResultField.textContent = playerSelectionCapitalised;
+  computerResultField.textContent = computerSelectionCapitalised;
+
+
   let win;
   let winner;
+  let resultExplanation;
 
   if (playerSelection === computerSelection) {
     
@@ -28,6 +36,8 @@ function playRound() {
     console.log(playerSelection);
     console.log(computerSelection);
     console.log(winner);
+
+    explanationResultField.textContent = 'It\'s a tie.';
   }
 
   if (playerSelection === "rock") {
@@ -56,6 +66,10 @@ function playRound() {
     console.log(playerSelection);
     console.log(computerSelection);
     console.log(winner);
+
+    resultExplanation = playerSelectionCapitalised + ' beats ' + computerSelectionCapitalised + '. <br>The Player wins this round.';
+    explanationResultField.innerHTML = resultExplanation;
+
     updateScore(winner);
     checkPlayerWin();
 
@@ -65,6 +79,10 @@ function playRound() {
     console.log(playerSelection);
     console.log(computerSelection);
     console.log(winner);
+
+    resultExplanation = playerSelectionCapitalised + '  gets beaten by ' + computerSelectionCapitalised + '. <br>The Computer wins this round.';
+    explanationResultField.innerHTML = resultExplanation;
+
     updateScore(winner);
     checkComputerWin();
 
@@ -90,7 +108,8 @@ function updateScore(winner) {
 function checkPlayerWin() {
   let currentScore = Number(playerScoreField.textContent);
   if (currentScore >= 5) {
-    winnerField.textContent = 'Congrutalations! You won against the Computer. Want to play again?';
+    winnerField.textContent = 'Congratulations! You won against the Computer. Want to play again?';
+    stopGame();
   }
 }
 
@@ -98,45 +117,51 @@ function checkComputerWin() {
   let currentScore = Number(computerScoreField.textContent);
   if (currentScore >= 5) {
     winnerField.textContent = 'Oh no! The computer won. Better Luck next time. Want to play again?';
+    stopGame();
   }
 }
 
-function game() {
-  let playerWinCount = 0;
-  let computerWinCount = 0;
-  let message;
+function stopGame() {
+  rockButton.classList.toggle('inactive');
+  paperButton.classList.toggle('inactive');
+  scissorsButton.classList.toggle('inactive');
+  newGameButton.classList.toggle('inactive');
+}
 
-  while (playerWinCount + computerWinCount < 5) {
-    playerSelection = prompt("Choose 'Rock', 'Paper' or 'Scissors'.")
-    computerSelection = computerPlay();
-    let winner = playRound(playerSelection, computerSelection);
+function newGame() {
+  newGameButton.classList.toggle('inactive');
+  rockButton.classList.toggle('inactive');
+  paperButton.classList.toggle('inactive');
+  scissorsButton.classList.toggle('inactive');
 
-    if (winner === "player") {
-      playerWinCount += 1;
-      message = "You won! " + playerSelection.replace(playerSelection[0], playerSelection[0].toUpperCase()) + " beats " + computerSelection.replace(computerSelection[0], computerSelection[0].toUpperCase()) + ".";
-    } else if (winner === "computer") {
-      computerWinCount += 1;
-      message = "The computer won! " + computerSelection.replace(computerSelection[0], computerSelection[0].toUpperCase()) + " beats " + playerSelection.replace(playerSelection[0], playerSelection[0].toUpperCase()) + ".";
-    } else if (winner === "tie") {
-      message = "It's a Tie! Try again."; 
-    } else {
-      message = "An error occured. Please try again."
-    }
-
-    console.log(message);
-    console.log("The score is: " + playerWinCount + " : " + computerWinCount);
-  }
-
-  console.log("The final winner is: " + ((playerWinCount < computerWinCount) ? "The Computer" : "You"));
+  winnerField.textContent = '';
+  playerResultField.textContent = '';
+  computerResultField.textContent = '';
+  explanationResultField.textContent = '';
+  
+  playerScoreField.textContent = 0;
+  computerScoreField.textContent = 0;
 }
 
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
+
+const newGameButton = document.querySelector('#newGame');
+
+const playerResultField = document.getElementById('roundResultPlayer');
+const computerResultField = document.getElementById('roundResultComputer');
+const explanationResultField = document.getElementById('roundResultExplanation');
+
 const playerScoreField = document.querySelector('#playerScore');
 const computerScoreField = document.querySelector('#computerScore');
 const winnerField = document.querySelector('#winner');
 
+
+
+
 rockButton.addEventListener('click', playRound);
 paperButton.addEventListener('click', playRound);
 scissorsButton.addEventListener('click', playRound);
+
+newGameButton.addEventListener('click', newGame);

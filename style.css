@@ -1,0 +1,79 @@
+body {
+  margin: auto auto;
+  width: 700px;
+}
+
+#title {
+  text-align: center;
+}
+
+#height {
+  height: 150px;
+}
+
+#buttons {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+}
+
+#buttons .round {
+  border-radius: 50%;
+}
+
+#tracker #players {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2em;
+}
+
+#tracker #players p {
+  width: 200px;
+  text-align: center;
+}
+
+#tracker #score div {
+  font-weight: bolder;
+  font-size: 3em;
+  width: 200px;
+  text-align: center;
+}
+
+#tracker #score {
+  display: flex;
+  justify-content: space-around;
+}
+
+#tracker #roundResult {
+  margin-top: 100px;
+}
+
+#tracker #roundResult div p {
+  width: 100px;
+  height: 25 px;
+  text-align: center;
+}
+
+#tracker #roundResult #roundResultExplanation {
+  text-align: center;
+  height: 25 px;
+}
+
+#tracker #roundResult div  {
+  display: flex;
+  justify-content: space-around;
+}
+
+#tracker #finalResult {
+  background-color: green;
+  margin-top: 50px;
+  text-align: center;
+}
+
+
+.inactive {
+  display: none;
+}
+
