@@ -8,30 +8,32 @@
   <title>Rock Paper Scissors</title>
 </head>
 <body>
-  <h1 id="title">Let's Play Rock, Paper Scissors!</h1>
+  <h1 id="title">Let's Play Rock, Paper, Scissors!</h1>
   <div id="height">
     <div id="buttons">
-      <button class="round" id="rock"><img src="images/rock-logo.png" alt="Rock" height="75px" width="75px"></button>
-      <button class="round" id="paper"><img src="images/paper-logo.png" alt="Paper" height="75px" width="75px"></button>
-      <button class="round" id="scissors"><img src="images/scissors-logo.png" alt="Scissors" height="75px" width="75px"></button>
-      <button id="newGame" class="inactive">New Game</button>
+      <button class="round" id="rock"><img src="images/rock-logo.png" alt="Rock" height="150px" width="150px"></button>
+      <button class="round" id="paper"><img src="images/paper-logo.png" alt="Paper" height="150px" width="150px"></button>
+      <button class="round" id="scissors"><img src="images/scissors-logo.png" alt="Scissors" height="150px" width="150px"></button>
+      <button id="newGame" class="inactive" width="150px" height="150px">New Game</button>
     </div>
   </div>
 
   <div id="tracker">
-    <section id="players">
-      <p>Player</p>
-      <p>vs.</p>
-      <p>Computer</p>
-    </section>
+    <div class="playersScore">
+      <section id="players">
+        <p>Player</p>
+        <p>vs.</p>
+        <p>Computer</p>
+      </section>
+  
+      <section id="score">
+        <div id="playerScore">0</div>
+        <div>:</div>
+        <div id="computerScore">0</div>
+      </section>
+    </div>
 
-    <section id="score">
-      <div id="playerScore">0</div>
-      <div>:</div>
-      <div id="computerScore">0</div>
-    </section>
-
-    <section id="roundResult">
+    <section class="inactive" id="roundResult">
       <div>
         <p id="roundResultPlayer"></p>
         <p id="roundResultComputer"></p>

@@ -1,3 +1,9 @@
+html {
+  height: 100%;
+  background: url(images/background.jpg) no-repeat center center fixed; 
+  background-size: cover;
+}
+
 body {
   margin: auto auto;
   width: 700px;
@@ -8,7 +14,7 @@ body {
 }
 
 #height {
-  height: 150px;
+  height: 200px;
 }
 
 #buttons {
@@ -16,11 +22,26 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-content: center;
+  
 }
 
 #buttons .round {
   border-radius: 50%;
+}
+
+#buttons #newGame {
+  width: 350px;
+  height: 150px;
+  font-size: 2em;
+  color: black;
+}
+  
+
+#tracker .playersScore,
+#tracker #roundResult {
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 #tracker #players {
@@ -32,6 +53,7 @@ body {
 #tracker #players p {
   width: 200px;
   text-align: center;
+  margin: 16px;
 }
 
 #tracker #score div {
@@ -39,6 +61,7 @@ body {
   font-size: 3em;
   width: 200px;
   text-align: center;
+  margin: 16px;
 }
 
 #tracker #score {

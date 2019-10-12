@@ -88,7 +88,9 @@ function playRound() {
 
   }
 
+  roundResultField.classList.remove('inactive');
   return winner;
+  
 }
 
 function updateScore(winner) {
@@ -107,7 +109,7 @@ function updateScore(winner) {
 
 function checkPlayerWin() {
   let currentScore = Number(playerScoreField.textContent);
-  if (currentScore >= 5) {
+  if (currentScore >= requiredWins) {
     winnerField.textContent = 'Congratulations! You won against the Computer. Want to play again?';
     stopGame();
   }
@@ -115,7 +117,7 @@ function checkPlayerWin() {
 
 function checkComputerWin() {
   let currentScore = Number(computerScoreField.textContent);
-  if (currentScore >= 5) {
+  if (currentScore >= requiredWins) {
     winnerField.textContent = 'Oh no! The computer won. Better Luck next time. Want to play again?';
     stopGame();
   }
@@ -133,6 +135,7 @@ function newGame() {
   rockButton.classList.toggle('inactive');
   paperButton.classList.toggle('inactive');
   scissorsButton.classList.toggle('inactive');
+  roundResultField.classList.add('inactive');
 
   winnerField.textContent = '';
   playerResultField.textContent = '';
@@ -143,6 +146,8 @@ function newGame() {
   computerScoreField.textContent = 0;
 }
 
+let requiredWins = 3;
+
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
@@ -152,6 +157,7 @@ const newGameButton = document.querySelector('#newGame');
 const playerResultField = document.getElementById('roundResultPlayer');
 const computerResultField = document.getElementById('roundResultComputer');
 const explanationResultField = document.getElementById('roundResultExplanation');
+const roundResultField = document.getElementById('roundResult');
 
 const playerScoreField = document.querySelector('#playerScore');
 const computerScoreField = document.querySelector('#computerScore');
