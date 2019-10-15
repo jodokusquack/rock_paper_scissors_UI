@@ -2,6 +2,7 @@ html {
   height: 100%;
   background: url(images/background.jpg) no-repeat center center fixed; 
   background-size: cover;
+  font-family: 'Dosis', sans-serif;
 }
 
 body {
@@ -11,6 +12,8 @@ body {
 
 #title {
   text-align: center;
+  font-family: 'Abril Fatface', cursive;
+  font-size: 3em;
 }
 
 #height {
@@ -25,8 +28,24 @@ body {
   
 }
 
-#buttons .round {
+#buttons img {
+  padding: 0;
+  border: 2px solid black;
   border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 2px 9px rgba(153, 153, 153, 0.8);
+}
+
+#buttons img:hover {
+  outline: none;
+  border-color: rgb(230, 180, 16);
+  box-shadow: 2px 9px rgba(153, 153, 153, 0.8), 0 0 10px rgb(230, 180, 16);
+}
+
+#buttons img:active {
+  box-shadow: 2px 5px rgba(102, 102, 102, 0.8), 0 0 10px rgb(230, 180, 16);
+  transform: translateY(4px);
 }
 
 #buttons #newGame {
@@ -35,7 +54,12 @@ body {
   font-size: 2em;
   color: black;
 }
-  
+
+#startGame form {
+  text-align: center;
+  font-size: 1.5em;
+  padding-bottom: 25px;
+}
 
 #tracker .playersScore,
 #tracker #roundResult {
@@ -56,37 +80,42 @@ body {
   margin: 16px;
 }
 
+#tracker #score {
+  display: flex;
+  justify-content: space-around;
+}
+
 #tracker #score div {
   font-weight: bolder;
   font-size: 3em;
   width: 200px;
   text-align: center;
   margin: 16px;
-}
-
-#tracker #score {
-  display: flex;
-  justify-content: space-around;
+  transition: all 0.3s ease;
 }
 
 #tracker #roundResult {
   margin-top: 100px;
 }
 
+#tracker #roundResult div  {
+  display: flex;
+  justify-content: space-around;
+}
+
 #tracker #roundResult div p {
   width: 100px;
   height: 25 px;
   text-align: center;
+  font-size: 2em;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 #tracker #roundResult #roundResultExplanation {
   text-align: center;
   height: 25 px;
-}
-
-#tracker #roundResult div  {
-  display: flex;
-  justify-content: space-around;
+  font-size: 1.2em;
 }
 
 #tracker #finalResult {
@@ -95,8 +124,38 @@ body {
   text-align: center;
 }
 
-
 .inactive {
   display: none;
 }
 
+.wonRound {
+  transform: scale(1.8);
+}
+
+.playerWon {
+  animation-name: changeToGreen;
+  animation-duration: .2s;
+  animation-delay: 0s;
+  animation-iteration-count: 5;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+.computerWon {
+  animation-name: changeToRed;
+  animation-duration: .2s;
+  animation-delay: 0s;
+  animation-iteration-count: 5;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes changeToGreen {
+  0% {background-color: rgba(255, 255, 255, 0.75);}
+  100% {background-color: rgba(0,255,0,0.75);}
+  }
+
+  @keyframes changeToRed {
+    0% {background-color: rgba(255, 255, 255, 0.75);}
+    100% {background-color: rgba(255,0,0,0.75);}
+    }

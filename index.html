@@ -5,32 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Dosis&display=swap" rel="stylesheet"> 
   <title>Rock Paper Scissors</title>
 </head>
+
 <body>
-  <h1 id="title">Let's Play Rock, Paper, Scissors!</h1>
+  <p id="title">Rock, Paper, Scissors!</p>
   <div id="height">
     <div id="buttons">
-      <button class="round" id="rock"><img src="images/rock-logo.png" alt="Rock" height="150px" width="150px"></button>
-      <button class="round" id="paper"><img src="images/paper-logo.png" alt="Paper" height="150px" width="150px"></button>
-      <button class="round" id="scissors"><img src="images/scissors-logo.png" alt="Scissors" height="150px" width="150px"></button>
+      <img id="rock" src="images/rock-logo.png" alt="Rock" height="150px" width="150px">
+      <img id="paper" src="images/paper-logo.png" alt="Paper" height="150px" width="150px">
+      <img id="scissors" src="images/scissors-logo.png" alt="Scissors" height="150px" width="150px">
       <button id="newGame" class="inactive" width="150px" height="150px">New Game</button>
     </div>
   </div>
 
   <div id="tracker">
     <div class="playersScore">
-      <section id="players">
-        <p>Player</p>
-        <p>vs.</p>
-        <p>Computer</p>
+      <section id="startGame">
+        <form id="nameForm" method="POST" onsubmit="event.preventDefault();">
+          <p>Who's Playing?</p>
+          <input type="text" id="playerName" name="playerName" maxlength="15" placeholder="Player Name" autofocus>
+          <button type="submit" id="startGameButton">Play Game!</button>
+        </form>
       </section>
-  
-      <section id="score">
-        <div id="playerScore">0</div>
-        <div>:</div>
-        <div id="computerScore">0</div>
-      </section>
+
+      <div class="inactive" id="scoreFields">
+        <section id="players">
+          <p id="playerNameField">Player</p>
+          <p>vs.</p>
+          <p>Computer</p>
+        </section>
+    
+        <section id="score">
+          <div id="playerScore">0</div>
+          <div>:</div>
+          <div id="computerScore">0</div>
+        </section>
+      </div>
     </div>
 
     <section class="inactive" id="roundResult">
@@ -39,10 +51,6 @@
         <p id="roundResultComputer"></p>
       </div>
       <p id="roundResultExplanation"></p>
-    </section>
-
-    <section id="finalResult">
-      <div id="winner"></div>
     </section>
   </div>
 
